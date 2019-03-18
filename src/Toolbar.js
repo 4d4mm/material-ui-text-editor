@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { IconButton, Typography } from "@material-ui/core";
+
 import DEFAULT_TOOLBAR_ITEM_MAPPINGS from "./constants/defaultToolbarItemMappings";
 
 const Toolbar = ({ config, onFormatDoc, openDialog, dialogTypes }) => (
@@ -42,5 +44,14 @@ const Toolbar = ({ config, onFormatDoc, openDialog, dialogTypes }) => (
     })}
   </div>
 );
+
+Toolbar.propTypes = {
+  config: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+  ),
+  onFormatDoc: PropTypes.func,
+  openDialog: PropTypes.func,
+  dialogTypes: PropTypes.object
+};
 
 export default Toolbar;
