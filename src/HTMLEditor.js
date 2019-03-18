@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Dialog,
   DialogTitle,
@@ -90,7 +91,6 @@ export class HTMLEditor extends React.Component {
 
   render() {
     const { style, html, config, ...props } = this.props;
-    console.log(config);
     return (
       <div
         style={Object.assign(
@@ -138,6 +138,14 @@ export class HTMLEditor extends React.Component {
     );
   }
 }
+
+HTMLEditor.propTypes = {
+  config: PropTypes.shape({
+    toolbar: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    )
+  })
+};
 
 HTMLEditor.defaultProps = {
   config: {
