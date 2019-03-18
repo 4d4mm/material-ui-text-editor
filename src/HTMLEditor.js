@@ -90,6 +90,7 @@ export class HTMLEditor extends React.Component {
 
   render() {
     const { style, html, config, ...props } = this.props;
+    console.log(config);
     return (
       <div
         style={Object.assign(
@@ -108,10 +109,10 @@ export class HTMLEditor extends React.Component {
         />
         <ContentEditable
           innerRef={this.contentEditable}
-          html={this.state.html} // innerHTML of the editable div
-          disabled={false} // use true to disable editing
-          onChange={this.handleChange} // handle innerHTML change
-          tagName="div" // Use a custom HTML tag (uses a div by default)
+          html={this.state.html}
+          disabled={false}
+          onChange={this.handleChange}
+          tagName="div"
           style={{
             outline: 0,
             border: "1px solid"
@@ -138,8 +139,8 @@ export class HTMLEditor extends React.Component {
   }
 }
 
-HTMLEditor.defautProps = {
+HTMLEditor.defaultProps = {
   config: {
-    toobar: DEFAULT_TOOLBAR_CONF
+    toolbar: DEFAULT_TOOLBAR_CONF
   }
 };

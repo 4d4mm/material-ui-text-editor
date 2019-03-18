@@ -8,7 +8,7 @@ const Toolbar = ({ config, onFormatDoc, openDialog, dialogTypes }) => (
       if (typeof item === "string") {
         if (dialogTypes[item]) {
           return (
-            <IconButton onClick={openDialog(item)}>
+            <IconButton key={`button ${item}`} onClick={openDialog(item)}>
               {React.createElement(
                 DEFAULT_TOOLBAR_ITEM_MAPPINGS[item].icon,
                 { fontSize: "small" },
@@ -18,7 +18,7 @@ const Toolbar = ({ config, onFormatDoc, openDialog, dialogTypes }) => (
           );
         } else if (DEFAULT_TOOLBAR_ITEM_MAPPINGS[item]) {
           return (
-            <IconButton onClick={onFormatDoc(item)}>
+            <IconButton key={`button ${item}`} onClick={onFormatDoc(item)}>
               {React.createElement(
                 DEFAULT_TOOLBAR_ITEM_MAPPINGS[item].icon,
                 { fontSize: "small" },
@@ -28,13 +28,16 @@ const Toolbar = ({ config, onFormatDoc, openDialog, dialogTypes }) => (
           );
         } else {
           return (
-            <IconButton onClick={onFormatDoc("formatblock", item)}>
+            <IconButton
+              key={`button ${item}`}
+              onClick={onFormatDoc("formatblock", item)}
+            >
               <Typography>{item.toUpperCase()}</Typography>
             </IconButton>
           );
         }
       } else {
-        return "TODO";
+        return <React.Fragment>TODO</React.Fragment>;
       }
     })}
   </div>
